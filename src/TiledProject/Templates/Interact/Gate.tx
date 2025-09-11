@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object name="Gate" width="128" height="128">
+  <properties>
+   <property name="CanOpen" type="bool" value="false"/>
+   <property name="HasScriptedEvent" type="bool" value="false"/>
+   <property name="IsLocked" type="bool" value="false"/>
+   <property name="IsOpen" type="bool" value="false"/>
+   <property name="Script" type="file" value=""/>
+  </properties>
+ </object>
+</template>

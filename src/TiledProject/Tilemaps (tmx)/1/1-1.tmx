@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="16" height="5" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="5">
+ <editorsettings>
+  <export target="../../Tilemaps/1/1-1.lua" format="lua"/>
+ </editorsettings>
+ <tileset firstgid="1" name="testChlorovyllTileset" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="../../Tilesets/testChlorovyllTileset.png" width="512" height="512"/>
+ </tileset>
+ <layer id="1" name="Foreground" width="16" height="5">
+  <data encoding="csv">
+0,0,0,6,6,6,6,0,0,0,0,0,0,2684354569,10,10,
+0,0,6,6,6,6,6,6,0,0,0,0,0,2684354569,10,10,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
+</data>
+ </layer>
+ <objectgroup id="3" name="Terrain">
+  <object id="1" x="0" y="64" width="512"/>
+ </objectgroup>
+ <objectgroup id="4" name="TeleportPoints">
+  <object id="4" x="416" y="32">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="Interact">
+  <object id="2" name="LoadingZone" x="448" y="0" width="64" height="64">
+   <properties>
+    <property name="MapToLoad" type="file" value="../../Tilemaps/1/1-2.lua"/>
+    <property name="NeedsInteract" type="bool" value="false"/>
+    <property name="TeleportPointID" type="int" value="10"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

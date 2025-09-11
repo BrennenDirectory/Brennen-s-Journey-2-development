@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="16" height="8" tilewidth="64" tileheight="64" infinite="0" nextlayerid="6" nextobjectid="5">
+ <editorsettings>
+  <export target="../Tilemaps/testInterior1.lua" format="lua"/>
+ </editorsettings>
+ <tileset firstgid="1" name="TestTileSet1" tilewidth="64" tileheight="64" tilecount="64" columns="8">
+  <image source="../Tilesets/TestTileSet1.png" width="512" height="512"/>
+ </tileset>
+ <layer id="1" name="Foreground" width="16" height="8">
+  <data encoding="csv">
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup id="2" name="Walls">
+  <object id="2" x="0" y="0" width="64" height="448"/>
+  <object id="3" x="960" y="0" width="64" height="448"/>
+ </objectgroup>
+ <objectgroup id="3" name="Ground">
+  <object id="1" x="0" y="448" width="1024" height="64"/>
+ </objectgroup>
+ <objectgroup id="4" name="LoadingZones">
+  <object id="4" x="256" y="320" width="64" height="128">
+   <properties>
+    <property name="MapToLoad" type="file" value="../Tilemaps/testTIlemap1.lua"/>
+    <property name="TeleportPointID" type="int" value="8"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="TeleportPoints"/>
+</map>

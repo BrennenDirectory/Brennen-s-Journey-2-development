@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="32" height="14" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="33">
+ <editorsettings>
+  <export target="../../Tilemaps/1/1-8.lua" format="lua"/>
+ </editorsettings>
+ <tileset firstgid="1" name="testChlorovyllTileset" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="../../Tilesets/testChlorovyllTileset.png" width="512" height="512"/>
+ </tileset>
+ <layer id="1" name="Foreground" width="32" height="14">
+  <data encoding="csv">
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,
+0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,
+5,5,5,5,5,5,0,0,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,
+5,5,5,5,5,5,0,0,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,
+5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,
+5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,5,5,5,5,0,0,0,0,0,0,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,5,5,5,5,0,0,0,0,0,0,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5
+</data>
+ </layer>
+ <objectgroup id="2" name="Terrain">
+  <object id="1" x="160" y="128" width="32"/>
+  <object id="2" x="256" y="256" width="32"/>
+  <object id="3" x="832" y="160" width="32"/>
+  <object id="4" x="512" y="256" width="128"/>
+  <object id="5" x="512" y="256" height="64"/>
+  <object id="6" x="640" y="256" height="64"/>
+  <object id="7" x="512" y="320" width="128"/>
+  <object id="8" x="832" y="160" height="224"/>
+  <object id="9" x="192" y="128" height="128"/>
+  <object id="10" x="288" y="256" height="128"/>
+  <object id="11" x="288" y="64" height="128"/>
+  <object id="12" x="352" y="64" height="128"/>
+  <object id="13" x="960" y="64" height="96"/>
+  <object id="15" x="544" y="416">
+   <polygon points="0,0 -256,-32 0,-32"/>
+  </object>
+  <object id="16" x="544" y="416">
+   <polygon points="0,0 288,-32 0,-32"/>
+  </object>
+  <object id="17" x="896" y="192">
+   <polygon points="0,0 -32,-32 64,-32"/>
+  </object>
+  <object id="21" x="960" y="64">
+   <polygon points="0,0 -608,0 -320,-32"/>
+  </object>
+  <object id="22" x="288" y="64">
+   <polygon points="0,0 -224,0 -96,-32"/>
+  </object>
+  <object id="23" x="224" y="288">
+   <polygon points="0,0 32,-32 -32,-32"/>
+  </object>
+  <object id="24" x="96" y="160">
+   <polygon points="0,0 64,-32 -32,-32"/>
+  </object>
+  <object id="25" x="288" y="192" width="64"/>
+ </objectgroup>
+ <objectgroup id="3" name="Interact">
+  <object id="27" template="../../Templates/Interact/RespawnPoint.tx" x="96" y="64"/>
+  <object id="28" name="LoadingZone" x="0" y="64" width="64" height="64">
+   <properties>
+    <property name="MapToLoad" type="file" value="../../Tilemaps/1/1-6.lua"/>
+    <property name="NeedsInteract" type="bool" value="false"/>
+    <property name="TeleportPointID" type="int" value="56"/>
+   </properties>
+  </object>
+  <object id="31" template="../../Templates/Interact/RespawnPoint.tx" x="832" y="64" width="32" height="96"/>
+  <object id="32" name="Chest" x="907" y="122" width="48" height="38">
+   <properties>
+    <property name="Direction" type="int" value="-1"/>
+    <property name="LootType" propertytype="ChestLootTypes" value="TaceyBucks"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="Enemies">
+  <object id="29" template="../../Templates/Enemies/1/Bat.tx" x="480" y="160"/>
+  <object id="30" template="../../Templates/Enemies/1/Bat.tx" x="704" y="192"/>
+ </objectgroup>
+ <objectgroup id="5" name="TeleportPoints">
+  <object id="26" x="96" y="96">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object name="LoadingZone" width="64" height="64">
+  <properties>
+   <property name="MapToLoad" type="file" value=""/>
+   <property name="NeedsInteract" type="bool" value="false"/>
+   <property name="TeleportPointID" type="int" value="0"/>
+  </properties>
+ </object>
+</template>
