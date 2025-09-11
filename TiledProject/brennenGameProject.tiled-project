@@ -1,0 +1,92 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "compatibilityVersion": 1100,
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "properties": [
+    ],
+    "propertyTypes": [
+        {
+            "id": 6,
+            "name": "BreakableDamageSources",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Weapon",
+                "Spell",
+                "SandBomb",
+                "GravelBomb"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "id": 9,
+            "name": "ChestLootType",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Weapon",
+                "TaceyBucks",
+                "XP"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "id": 3,
+            "name": "CollectibleIDs",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "ALLEN_WRENCH",
+                "BASIC_SPELL",
+                "NONE"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 7,
+            "members": [
+                {
+                    "name": "TextureID",
+                    "propertyType": "TextureIDs",
+                    "type": "string",
+                    "value": "NONE"
+                }
+            ],
+            "name": "ComplexTerrain",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset",
+                "project"
+            ]
+        },
+        {
+            "id": 8,
+            "name": "TextureIDs",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "NONE",
+                "CHLOROVYLL_GRASS",
+                "CHLOROVYLL_DIRT",
+                "CHLOROVYLL_ROCK",
+                "LEAF_VILLAGE_GRASS",
+                "LEAF_VILLAGE_DIRT"
+            ],
+            "valuesAsFlags": false
+        }
+    ]
+}

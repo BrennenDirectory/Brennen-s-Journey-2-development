@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="26" height="8" tilewidth="64" tileheight="64" infinite="0" nextlayerid="12" nextobjectid="20">
+ <editorsettings>
+  <export target="../Tilemaps/testWorld2.lua" format="lua"/>
+ </editorsettings>
+ <tileset firstgid="1" name="TestTileSet1" tilewidth="64" tileheight="64" tilecount="64" columns="8">
+  <image source="../Tilesets/TestTileSet1.png" width="512" height="512"/>
+ </tileset>
+ <layer id="1" name="Foreground" width="26" height="8">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <group id="2" name="Terrain">
+  <objectgroup id="3" name="Walls">
+   <object id="1" x="0" y="0" height="448"/>
+   <object id="2" x="1664" y="0" height="448"/>
+   <object id="10" x="1408" y="192" height="256"/>
+   <object id="16" x="896.375" y="383.875" height="64"/>
+  </objectgroup>
+  <objectgroup id="4" name="Ground">
+   <object id="3" x="0" y="448" width="1664"/>
+   <object id="9" x="1408" y="192" width="256"/>
+   <object id="11" x="512" y="448">
+    <polygon points="0,0 384,-64 384,0"/>
+   </object>
+  </objectgroup>
+ </group>
+ <objectgroup id="6" name="TeleportPoints">
+  <object id="7" x="192" y="384">
+   <point/>
+  </object>
+  <object id="19" x="1472" y="128">
+   <point/>
+  </object>
+ </objectgroup>
+ <group id="9" name="Interactables">
+  <objectgroup id="7" name="LoadingZones">
+   <object id="6" x="0" y="320" width="128" height="128">
+    <properties>
+     <property name="MapToLoad" type="file" value="../Tilemaps/testWorld1.lua"/>
+     <property name="TeleportPointID" type="int" value="23"/>
+    </properties>
+   </object>
+   <object id="15" x="1536" y="64" width="128" height="128">
+    <properties>
+     <property name="MapToLoad" type="file" value="../Tilemaps/testWorld3.lua"/>
+     <property name="TeleportPointID" type="int" value="15"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </group>
+ <group id="11" name="PhysicsObjects">
+  <objectgroup id="8" name="Crates">
+   <object id="8" x="704" y="128" width="64" height="64">
+    <properties>
+     <property name="CanHold" type="bool" value="true"/>
+    </properties>
+   </object>
+  </objectgroup>
+ </group>
+</map>

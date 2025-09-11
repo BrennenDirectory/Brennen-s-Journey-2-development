@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="16" height="8" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="10">
+ <editorsettings>
+  <export target="../Tilemaps/testTIlemap1.lua" format="lua"/>
+ </editorsettings>
+ <tileset firstgid="1" name="TestTileSet1" tilewidth="64" tileheight="64" tilecount="64" columns="8">
+  <image source="../Tilesets/TestTileSet1.png" width="512" height="512"/>
+ </tileset>
+ <layer id="1" name="Foreground" width="16" height="8">
+  <data encoding="csv">
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <objectgroup id="2" name="Ground">
+  <object id="1" x="0" y="448" width="1024" height="64"/>
+ </objectgroup>
+ <objectgroup id="3" name="Walls">
+  <object id="2" x="0" y="0" width="64" height="448"/>
+  <object id="3" x="960" y="0" width="64" height="448"/>
+ </objectgroup>
+ <objectgroup id="4" name="LoadingZones">
+  <object id="6" x="896" y="320" width="64" height="128">
+   <properties>
+    <property name="MapToLoad" type="file" value="../Tilemaps/testTilemap3.lua"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="TeleportPoints">
+  <object id="8" x="640" y="128">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Pickups">
+  <object id="9" x="704" y="384" width="64" height="64">
+   <properties>
+    <property name="CollectibleID" type="int" value="1"/>
+    <property name="HasScriptedEvent" type="bool" value="true"/>
+    <property name="Script" type="file" value="../../ScriptedEvents/TestScriptedEvent1.lua"/>
+    <property name="Type" value="Ability"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
