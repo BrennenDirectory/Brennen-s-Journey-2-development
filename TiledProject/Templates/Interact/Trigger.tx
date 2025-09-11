@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<template>
- <object name="Trigger" width="64" height="128">
-  <properties>
-   <property name="IsFromTiled" type="bool" value="false"/>
-   <property name="Script" type="file" value=""/>
-  </properties>
- </object>
-</template>

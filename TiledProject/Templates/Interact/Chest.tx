@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<template>
- <object name="Chest" width="48" height="38">
-  <properties>
-   <property name="Direction" type="int" value="0"/>
-   <property name="LootType" propertytype="ChestLootTypes" value="TaceyBucks"/>
-  </properties>
- </object>
-</template>
