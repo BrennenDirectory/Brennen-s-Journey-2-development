@@ -20,7 +20,10 @@ local components = {
         canHold = true,
         canThrow = true,
         minVxForThrow = 50,
-        minVyForThrow = 5
+        minVyForThrow = 5,
+        throwForce = 1000,
+        throwForceMultiplierX = 2,
+        throwForceMultiplierY = -5
     },
 
     ['body'] = {
@@ -42,8 +45,15 @@ local function Crate(TiledObject)
     crate.components.liftable.homeX = TiledObject.x
     crate.components.liftable.homeY = TiledObject.y
     crate.components.liftable.canHold = TiledObject.properties.CanHold
+    crate.components.liftable.canThrow = TiledObject.properties.CanThrow
+    crate.components.hitbox:setObject(crate)
 
-    crate:addSystems(systems)
+    if TiledObject.properties.CanHold then
+        crate.tags.canInteractWith = true
+        crate:addSystems(systems)
+    else
+        crate.tags.canInteractWith = false
+    end
 
     return crate
 end

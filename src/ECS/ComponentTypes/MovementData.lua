@@ -1,9 +1,8 @@
 return function(data)
     return {
-        currentSpeed = data.currentSeed,
+        currentSpeed = data.currentSpeed,
         walkSpeed = data.walkSpeed,
         sprintSpeed = data.sprintSpeed,
-        heldObjectWalkSpeed = data.heldObjectWalkSpeed,
-        isControlledByUser = data.isControlledByUser
+        heldObjectWalkSpeed = data.heldObjectWalkSpeed
     }
 end

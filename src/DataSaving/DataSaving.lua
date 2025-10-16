@@ -2,6 +2,7 @@ local DataSaving = {}
 local SavedDataTemplate = require"src.DataSaving.SavedDataTemplate"
 local SAVE_FILE_NAME = "TestSaveFile1.lua"
 
+-- DO NOT USE THIS MODULE ANYMORE
 -- hahaha i dont know what im doing
 local function serialize(value)
     local fileData = "return {"

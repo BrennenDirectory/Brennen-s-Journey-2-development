@@ -38,7 +38,7 @@ function Entity:destroy()
         if self.systems[system].remove then
             self.systems[system]:remove()
         end
-        
+
         self.systems[system] = nil
     end
 

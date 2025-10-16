@@ -157,7 +157,7 @@ local function controls()
     end
 
     jumpControls()
-    interactControls()
+    --interactControls()
     sprintControls()
 end
 

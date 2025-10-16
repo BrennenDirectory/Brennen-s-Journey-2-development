@@ -1,4 +1,6 @@
-local EntityController = {}
+local EntityController = {
+    CameraControlledEntity = {}
+}
 
 local Entities = require"src.ECS.Entities"
 
@@ -9,26 +11,25 @@ function EntityController.load() -- use later to load entities slowly into memor
         x = 269,
         y = -129,
         properties = {
-            CanHold = true
+            CanHold = true,
+            CanThrow = false
         }
     })
 
     local player = Entities['Player']()
 
     table.insert(entitiesInWorld, crate)
-        table.insert(entitiesInWorld, player)
+    table.insert(entitiesInWorld, player)
 
 end
 
 function EntityController.update(dt)
     for i, entity in ipairs(entitiesInWorld) do
-        if entity.flagForRemoval then
-            return
-        end
-
-        for system, systemModule in pairs(entity.systems) do
-            if systemModule.update then
-                systemModule:update(dt)
+        if not entity.flagForRemoval then
+            for system, systemModule in pairs(entity.systems) do
+                if systemModule.update then
+                    systemModule:update(dt)
+                end
             end
         end
     end
@@ -36,20 +37,18 @@ end
 
 function EntityController.draw()
     for i, entity in ipairs(entitiesInWorld) do
-        if entity.flagForRemoval then
-            return
-        end
-
-        for system, systemModule in pairs(entity.systems) do
-            if systemModule.draw then
-                systemModule:draw()
+        if not entity.flagForRemoval then
+            for name, system in pairs(entity.systems) do
+                if system.draw then
+                    system:draw()
+                end
             end
         end
     end
 end
 
-function EntityController.newEntity(TiledObject)
-    table.insert(entitiesInWorld, Entities[TiledObject.type](TiledObject))
+function EntityController.newEntity(ObjectData)
+    table.insert(entitiesInWorld, Entities[ObjectData.type](ObjectData))
 end
 
 function EntityController.remove(entity)
@@ -62,9 +61,12 @@ function EntityController.remove(entity)
     end
 end
 
-Signal.register("DestroyEntity", function(...)
-    print(...)
-    ---EntityController.remove(entity)
+Signal.register("DestroyEntity", function(entity)
+    EntityController.remove(entity)
+end)
+
+Signal.register("NewCameraControlledEntity", function(entity)
+    EntityController.CameraControlledEntity = entity
 end)
 
 return EntityController

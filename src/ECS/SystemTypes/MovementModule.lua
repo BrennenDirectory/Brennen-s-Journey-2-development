@@ -12,21 +12,11 @@ return function(entity)
 
     function movementModule:update(dt)
         local vx, vy = self.hitbox:getLinearVelocity()
-
-        if self.movementData.isControlledByUser then
-            if (not Input:down("left") and not Input:down("right")) or self.entity.tags.isBeingKnocked then
-                self.hitbox:setLinearVelocity(vx, vy)
-                return
-            else
-                self.hitbox:setLinearVelocity(self.movementData.currentSpeed * self.inputData.ix * dt, vy)
-            end
+        if (not Input:down("left") and not Input:down("right")) or self.entity.tags.isBeingKnocked then
+            self.hitbox:setLinearVelocity(vx, vy)
+            return
         else
-            if self.entity.tags.isBeingKnocked then
-                self.hitbox:setLinearVelocity(vx, vy)
-                return
-            else
-                self.hitbox:setLinearVelocity(self.movementData.currentSpeed * self.position.directionX * dt, vy)
-            end
+            self.hitbox:setLinearVelocity(self.movementData.currentSpeed * self.inputData.ix * dt, vy)
         end
     end
 

@@ -1,6 +1,5 @@
 _G.love = require("love")
 local source
-
 function love.load()
     source = require("src.source")
     source.load()

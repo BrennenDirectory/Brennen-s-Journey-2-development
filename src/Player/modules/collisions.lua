@@ -9,7 +9,6 @@ local knockback = {
     timer = Timer.new()
 }
 
-
 local function knockbackPlayer(enemy, otherObjectX)
     knockback.force = math.random(knockback.forceRange.min, knockback.forceRange.max)
     player.isBeingKnocked = true

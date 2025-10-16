@@ -25,6 +25,7 @@ function Crate:init(object)
     self.homeY = object.y
 
     self.weld = nil
+
 end
 
 function Crate:pickup(player)

@@ -10,8 +10,8 @@ local size = 32
 local HITBOX_CORNER_CUT_SIZE = 5
 
 function player:load()
-    local camera = require"src.lib.camera"
-    self.camera = camera()
+    -- local camera = require"src.lib.camera"
+    -- self.camera = camera()
     hitbox = world:newBSGRectangleCollider(128, -128, size, size, HITBOX_CORNER_CUT_SIZE)
     hitbox:setType("dynamic")
     hitbox:setFixedRotation(true)
@@ -91,11 +91,11 @@ function player:load()
 
     require"src.Player.modules.loadingFromSaveData"
 
-    player.camera:zoomTo(2)
+    --self.camera:zoomTo(2)
 end
 
 function player:update(dt)
-    self.camera:lookAt(self.hitbox:getX(), self.hitbox:getY())
+    --self.camera:lookAt(self.hitbox:getX(), self.hitbox:getY())
     controls()
     spellHandler.update()
     abilityHandler.update(dt)

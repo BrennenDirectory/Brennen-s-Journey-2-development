@@ -1,7 +1,7 @@
 require"src.ECS.EntitiesTypes.Entity"
 
 return {
+    Player = require"src.ECS.EntitiesTypes.Player",
     Crate = require"src.ECS.EntitiesTypes.Crate",
-    Player = require"src.ECS.EntitiesTypes.Player"
-
+    AllenWrench = require"src.ECS.EntitiesTypes.AllenWrench"
 }

@@ -3,6 +3,7 @@ local player
 local Enemies
 local MapLoading
 local DataSaving -- might choose to NOT save on application exit.
+local EntityController
 
 function source.load()
     local baton = require"src.lib.baton"
@@ -17,7 +18,8 @@ function source.load()
             jump = {"key:space"},
             interact = {"key:e"},
             sprint = {"key:lshift"},
-            useAbility = {"key:r"} -- here just so i can perform input:presses
+            useAbility = {"key:r"}, -- here just so i can perform input:presses
+            useWeapon = {"mouse:1"}
         }
     }
     _G.Signal = require"src.lib.signal"
@@ -28,7 +30,7 @@ function source.load()
     _G.WinWidth = 1280
     _G.WinHeight = 720
     _G.PlayerSaveData = require"src.DataSaving.SavedDataTemplate" -- {}
-    _G.Debug = require"src.Debug.Debug"
+   -- _G.Debug = require"src.Debug.Debug"
 
     -- object classes
     require"src.Classes.PhysicsObjects.Crate"
@@ -65,32 +67,39 @@ function source.load()
 
     MapLoading = require"src.MapLoading.MapLoading"
     MapLoading.CreateMap()
+
+    EntityController = require"src.ECS.EntityController"
+    EntityController.load()
 end
 
 function source.update(dt)
     Input:update()
     Enemies.update(dt)
+    EntityController.update(dt)
     player:update(dt)
     player.hud.update(dt)
     UpdateAll(dt)
     world:update(dt)
-    Debug.update(dt)
+    --Debug.update(dt)
 end
 
 function source.draw()
     love.graphics.clear(0.5, 0.5, 0)
-    player.camera:attach()
+    EntityController.CameraControlledEntity.systems.cameraBehavior:attach()
+    --player.camera:attach()
         DrawAll()
-        if Debug.isEnabled then
+        --if Debug.isEnabled then
             world:draw()
-        end
+        --end
         
         player:draw()
         Enemies.render()
-        Debug.drawInsideCamera()
-    player.camera:detach()
+        EntityController.draw()
+        --Debug.drawInsideCamera()
+    --player.camera:detach()
+    EntityController.CameraControlledEntity.systems.cameraBehavior:detach()
     player.hud.draw()
-    Debug.draw()
+    --Debug.draw()
 end
 
 function source.resize(width, height)
@@ -116,16 +125,16 @@ function source.keypressed(key, scancode, isrepeat)
         end
 
     end
-    Debug.keypressed(key, scancode, isrepeat)
+    --Debug.keypressed(key, scancode, isrepeat)
 end
 
 function source.mousepressed(x, y, button)
     player:mousepressed(x, y, button)
-    Debug.mousepressed(x, y, button)
+    --Debug.mousepressed(x, y, button)
 end
 
 function source.textinput(t)
-    Debug.textinput(t)
+    --Debug.textinput(t)
 end
 
 function source.quit()
