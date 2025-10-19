@@ -15,4 +15,5 @@ end
 function EntitySerialization:loadEntityData() -- can be called when the entity has all of its systems and components loaded
     self.saveData.content = DataSaving.loadDataFromFile(self.saveData.fileName, self.saveData.returnChunk)
     -- then manually assign the data in the entity
+    -- maybe add onDataLoaded function that handles the saved data content and assigns it to the entity
 end

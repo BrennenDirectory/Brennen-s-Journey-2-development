@@ -3,21 +3,21 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Tilemaps (tmx)/1/1-1.tmx",
+    "activeFile": "Tilemaps (tmx)/1/1-2.tmx",
     "expandedProjectPaths": [
         "Templates/Enemies",
-        "Templates/PhysicsObjects",
-        "Tilemaps",
-        "Tilemaps (tmx)/1",
-        "Tilemaps (tmx)/2",
-        "Tilemaps (tmx)",
-        ".",
         "Templates",
-        "Templates/Interact",
-        "Tilesets",
+        ".",
+        "Tilemaps (tmx)/2",
+        "Templates/PhysicsObjects",
         "Templates/Interactables",
-        "Templates/Enemies/1",
-        "Tilemaps/1"
+        "Templates/Interact",
+        "Tilemaps (tmx)/1",
+        "Tilemaps (tmx)",
+        "Tilesets",
+        "Tilemaps",
+        "Tilemaps/1",
+        "Templates/Enemies/1"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -35,15 +35,14 @@
         },
         "Tilemaps (tmx)/1/1-1.tmx": {
             "expandedObjectLayers": [
-                4,
-                5,
-                3
+                3,
+                6
             ],
-            "scale": 0.33,
+            "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1871.2121212121215,
-                "y": 251.51515151515173
+                "x": 2460.333333333333,
+                "y": -46.666666666666686
             }
         },
         "Tilemaps (tmx)/1/1-1.tmx#TestTileSet1": {
@@ -57,15 +56,14 @@
         },
         "Tilemaps (tmx)/1/1-2.tmx": {
             "expandedObjectLayers": [
-                2,
-                4,
-                3
+                3,
+                6
             ],
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1409.6666666666665,
-                "y": 479.33333333333337
+                "x": 1812.9999999999998,
+                "y": 445.33333333333337
             }
         },
         "Tilemaps (tmx)/1/1-2.tmx#TestTileSet1": {
@@ -81,15 +79,15 @@
             "expandedObjectLayers": [
                 2,
                 5,
-                6,
                 4,
-                3
+                3,
+                6
             ],
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "scale": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": -202,
-                "y": 252
+                "x": 784.25,
+                "y": 288.25
             }
         },
         "Tilemaps (tmx)/1/1-3.tmx#TestTileSet1": {
@@ -527,20 +525,22 @@
     "map.tileWidth": 32,
     "map.width": 16,
     "openFiles": [
-        "Tilemaps (tmx)/1/1-1.tmx"
+        "Tilemaps (tmx)/1/1-1.tmx",
+        "Tilemaps (tmx)/1/1-2.tmx",
+        "Tilemaps (tmx)/1/1-3.tmx"
     ],
     "project": "brennenGameProject.tiled-project",
     "property.type": "int",
     "recentFiles": [
         "Tilemaps (tmx)/1/1-1.tmx",
+        "Tilemaps (tmx)/1/1-3.tmx",
+        "Tilemaps (tmx)/1/1-2.tmx",
         "Tilemaps (tmx)/1/1-8.tmx",
         "Tilemaps (tmx)/1/1-5.tmx",
-        "Tilemaps (tmx)/1/1-2.tmx",
         "Tilemaps (tmx)/1/1-7.tmx",
         "Tilemaps (tmx)/2/2-1.tmx",
         "Tilemaps (tmx)/2/2-3.tmx",
         "Tilemaps (tmx)/2/2-2.tmx",
-        "Tilemaps (tmx)/1/1-3.tmx",
         "Tilemaps (tmx)/1/1-4.tmx",
         "Tilemaps (tmx)/1/1-6.tmx",
         "Tilesets/1-7.tmx"

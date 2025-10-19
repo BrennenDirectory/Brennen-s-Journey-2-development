@@ -9,6 +9,8 @@ require"src.ECS.SystemTypes.EntitySerialization"
 require"src.ECS.SystemTypes.Input.WeaponControls"
 require"src.ECS.SystemTypes.HitResponses"
 require"src.ECS.SystemTypes.CameraBehavior"
+require"src.ECS.SystemTypes.Spatial.HitboxCollisions"
+require"src.ECS.SystemTypes.Events.ScriptedEvents"
 
 return {
     heldObjectBehavior = HeldObjectBehavior,
@@ -25,5 +27,10 @@ return {
     entitySerialization = EntitySerialization,
     weaponControls = WeaponControls,
     hitResponses = HitResponses,
-    cameraBehavior = CameraBehavior
+    cameraBehavior = CameraBehavior,
+    hitboxCollisions = HitboxCollisions,
+    scriptedEvents = ScriptedEvents,
+    interactableBehavior = require"src.ECS.SystemTypes.Events.InteractableBehavior",
+    entityCreation = require"src.ECS.SystemTypes.Events.EntityCreation",
+    entitySignal = require"src.ECS.SystemTypes.Events.EntitySignals"
 }

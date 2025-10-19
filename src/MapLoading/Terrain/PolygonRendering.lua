@@ -8,7 +8,7 @@ for id, texture in pairs(Textures) do
     texture:setFilter("nearest", "nearest")
 end
 
-function RenderPolygons.Create(object)
+function RenderPolygons.create(object)
     local PolygonData = {
         X = object.x,
         Y = object.y,
@@ -32,13 +32,13 @@ function RenderPolygons.Create(object)
     PolygonData, vertices, mesh = nil, nil, nil
 end
 
-function RenderPolygons.Draw()
+function RenderPolygons.draw()
     for i, polygon in ipairs(CurrentPolygons) do
         love.graphics.draw(polygon.Mesh, polygon.X, polygon.Y)
     end
 end
 
-function RenderPolygons.Remove()
+function RenderPolygons.remove()
     for i = 1, #CurrentPolygons do
         CurrentPolygons[i] = nil
     end

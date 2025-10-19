@@ -1,3 +1,7 @@
+if true then
+    return -- MODULE HAS BEEN REWRITTEN!
+end
+
 local Triggers = {}
 local AvailableTriggers = {}
 --local AlreadyTriggered = _G.PlayerSaveData.TriggerIDs Apprently you cant index a table thats being referenced, i love LUA!!!! :(

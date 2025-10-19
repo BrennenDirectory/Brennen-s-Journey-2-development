@@ -18,17 +18,16 @@ function EntityController.load() -- use later to load entities slowly into memor
 
     local player = Entities['Player']()
 
-    table.insert(entitiesInWorld, crate)
-    table.insert(entitiesInWorld, player)
-
+    entitiesInWorld[player.id] = player
+    entitiesInWorld[crate.id] = crate
 end
 
 function EntityController.update(dt)
-    for i, entity in ipairs(entitiesInWorld) do
+    for id, entity in pairs(entitiesInWorld) do
         if not entity.flagForRemoval then
-            for system, systemModule in pairs(entity.systems) do
-                if systemModule.update then
-                    systemModule:update(dt)
+            for name, system in pairs(entity.systems) do
+                if system.update then
+                    system:update(dt)
                 end
             end
         end
@@ -36,7 +35,7 @@ function EntityController.update(dt)
 end
 
 function EntityController.draw()
-    for i, entity in ipairs(entitiesInWorld) do
+    for id, entity in pairs(entitiesInWorld) do
         if not entity.flagForRemoval then
             for name, system in pairs(entity.systems) do
                 if system.draw then
@@ -48,15 +47,31 @@ function EntityController.draw()
 end
 
 function EntityController.newEntity(ObjectData)
-    table.insert(entitiesInWorld, Entities[ObjectData.type](ObjectData))
+    local newEntity = Entities[ObjectData.name]
+    if newEntity then
+        newEntity = newEntity(ObjectData)
+        entitiesInWorld[newEntity.id] = newEntity
+    end
 end
 
 function EntityController.remove(entity)
-    for i = 1, #entitiesInWorld do
-        if entitiesInWorld[i] == entity then
+    for id, ent in pairs(entitiesInWorld) do
+        if id == entity.id then
             entity:destroy()
-            entitiesInWorld[i] = nil
+            entitiesInWorld[id] = nil
             break
+        end
+    end
+end
+
+function EntityController.removeAll(destroyUserControlledEntities)
+    for id, entity in pairs(entitiesInWorld) do
+        if entity.isControlledByUser and destroyUserControlledEntities then
+            entity:destroy()
+            entitiesInWorld[id] = nil
+        elseif not entity.tags.isControlledByUser then
+            entity:destroy()
+            entitiesInWorld[id] = nil
         end
     end
 end

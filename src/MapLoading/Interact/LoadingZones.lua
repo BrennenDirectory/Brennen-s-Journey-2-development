@@ -1,3 +1,7 @@
+if true then
+    return -- MODULE HAS BEEN REWRITTEN!
+end
+
 local LoadingZones = {}
 local Zones = {}
 

@@ -31,11 +31,10 @@ function InteractWithObjects:queryForObjects()
     if #objects > 0 then
         local object = objects[1]:getObject() -- interacts with only the first object found
 
-        if not object or not object.tags.canInteractWith then
+        if not object.tags.canInteractWith then
             return
         end
 
         object.systems[object.tags.systemForInteracting]:interact(self.entity)
-        self.tags.canInteract = false
     end
 end

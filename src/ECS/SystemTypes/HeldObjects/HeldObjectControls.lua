@@ -14,6 +14,10 @@ end
 function HeldObjectControls:update(dt)
     self.objectInteractDelay:update(dt)
     if self.tags.isHoldingObject then
+        if not self.tags.heldObject then
+            self:resetEntityState()
+            return
+        end
         if not self.frameDelay then
             self.frameDelay = true
             return
@@ -23,14 +27,18 @@ function HeldObjectControls:update(dt)
             heldObject = nil
 
             self.tags.heldObject = nil
-            self.tags.isHoldingObject = false
-            self.tags.canSprint = true
-            self.movementData.currentSpeed = self.movementData.walkSpeed
 
-            self.objectInteractDelay:after(INTERACT_DELAY, function()
-                self.tags.canInteract = true
-                self.frameDelay = false
-            end)
+            self:resetEntityState()
         end
     end
+end
+
+function HeldObjectControls:resetEntityState()
+    self.tags.isHoldingObject = false
+    self.tags.canSprint = true
+    self.movementData.currentSpeed = self.movementData.walkSpeed
+    self.objectInteractDelay:after(INTERACT_DELAY, function()
+        self.tags.canInteract = true
+        self.frameDelay = false
+    end)
 end

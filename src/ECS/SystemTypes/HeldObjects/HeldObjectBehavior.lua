@@ -37,6 +37,7 @@ function HeldObjectBehavior:interact(otherEntity)
         if self:hasEnoughSpace(otherEntity, 'y') then
             otherEntity.tags.isHoldingObject = true
             otherEntity.tags.canSprint = false
+            otherEntity.tags.canInteract = false
             otherEntity.components.movementData.currentSpeed = otherEntity.components.movementData.heldObjectWalkSpeed
             self:pickup(otherEntity)
         end

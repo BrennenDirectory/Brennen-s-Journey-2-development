@@ -111,12 +111,6 @@ function player:mousepressed(x, y, button)
     if button == 1 then
         weaponControls()
     end
-
-    if button == 2 then
-        local nx, ny = self.camera:mousePosition()
-        self.hitbox:setX(nx)
-        self.hitbox:setY(ny)
-    end
 end
 
 return player

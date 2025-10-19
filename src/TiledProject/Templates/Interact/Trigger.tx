@@ -3,7 +3,7 @@
  <object name="Trigger" width="64" height="128">
   <properties>
    <property name="IsFromTiled" type="bool" value="false"/>
-   <property name="Script" type="file" value=""/>
+   <property name="ScriptPath" type="file" value=""/>
   </properties>
  </object>
 </template>

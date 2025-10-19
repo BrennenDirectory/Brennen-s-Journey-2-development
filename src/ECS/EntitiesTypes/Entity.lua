@@ -1,5 +1,6 @@
 local Components = require"src.ECS.Components"
 local Systems = require"src.ECS.Systems"
+local UNUSED_DIGITS = 1000000
 
 _G.Entity = class{}
 
@@ -9,6 +10,7 @@ function Entity:init()
     self.tags = {}
 
     self.flagForRemoval = false
+    self.id = math.floor(math.random(os.time()) / UNUSED_DIGITS)
 end
 
 function Entity:addComponents(components)
@@ -20,6 +22,13 @@ end
 function Entity:addSystems(systems)
     for i, system in ipairs(systems) do
         self.systems[system] = Systems[system](self)
+    end
+end
+
+function Entity:removeSystems(systems)
+    for i, system in ipairs(systems) do
+        self.systems[system]:remove()
+        self.systems[system] = nil
     end
 end
 

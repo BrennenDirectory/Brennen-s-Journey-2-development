@@ -6,7 +6,8 @@ return function(entity)
     function heldObjectWeld:init()
         self.entity = entity
         self.hitbox = self.entity.components.hitbox
-        self.weldBetweenObjects = {}
+        self.weldBetweenObjects = nil
+        self.otherEntity = nil
     end
 
     function heldObjectWeld:weld(otherEntity)
@@ -17,13 +18,16 @@ return function(entity)
         self.hitbox:setX(otherHitbox:getX())
 
         self.weldBetweenObjects = world:addJoint("WeldJoint", self.hitbox, otherHitbox, self.hitbox:getX(), self.hitbox:getY(), false)
-
-        otherHitbox = nil
+        self.otherEntity = otherEntity
     end
 
     function heldObjectWeld:destroyWeld()
-        self.weldBetweenObjects:destroy()
-        self.weldBetweenObjects = {}
+        if type(self.weldBetweenObjects) == "userdata" then
+            if not self.weldBetweenObjects:isDestroyed() then
+                self.weldBetweenObjects:destroy()
+                self.weldBetweenObjects = nil
+            end
+        end
     end
 
     function heldObjectWeld:remove()
@@ -32,6 +36,7 @@ return function(entity)
             self.entity = nil
             self.hitbox = nil
             self.weldBetweenObjects = nil
+            self.otherEntity.tags.heldObject = nil
         end
     end
 

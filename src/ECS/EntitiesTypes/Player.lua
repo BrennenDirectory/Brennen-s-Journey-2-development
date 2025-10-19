@@ -16,7 +16,7 @@ local components = {
     ['interactQueryData'] = {
         width = HITBOX_SIZE,
         height = HITBOX_SIZE,
-        classes = {"Crate"},
+        classes = {"Crate", "Passage"},
         offsetX = HITBOX_SIZE / 2,
         offsetY = -HITBOX_SIZE / 2
     },
@@ -29,7 +29,7 @@ local components = {
     ['movementData'] = {
         currentSpeed = 10000,
         walkSpeed = 10000,
-        sprintSpeed = 18000,
+        sprintSpeed = 18000 * 2.5, -- 18000
         heldObjectWalkSpeed = 8000
     },
     ['jumpData'] = {
@@ -64,6 +64,12 @@ local components = {
         end,
         
         zoomLevel = 2
+    },
+    ['collisionData'] = {
+        
+    },
+    ['saveData'] = {
+        content = {}
     }
 }
 
@@ -79,7 +85,8 @@ local systems = {
     "healthBehavior",
     "weaponControls",
     "entitySerialization",
-    "cameraBehavior"
+    "cameraBehavior",
+    "hitboxCollisions"
 }
 
 local function Player()
@@ -90,6 +97,23 @@ local function Player()
 
     player.components.hitbox:setX(player.components.position.x)
     player.components.hitbox:setY(player.components.position.y)
+    player.components.hitbox:setObject(player)
+
+    player:addComponents({
+        ['signalData'] = {
+            name = "EntityCreated",
+            signalBody = function(idTable, entity)
+                local saveData = player.components.saveData
+                if not saveData[idTable] or not saveData[idTable][entity.components.tiledID] then
+                    return
+                else
+                    entity.systems.interactableBehavior:interact(player)
+                end
+            end
+        }
+    })
+
+    player.tags.isControlledByUser = true
 
     return player
 end

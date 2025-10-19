@@ -8,8 +8,8 @@ local EntityController
 function source.load()
     local baton = require"src.lib.baton"
     local windfield = require("src.lib.windfield")
-    _G.UpdateTable = {}
-    _G.DrawTable = {}
+    -- _G.UpdateTable = {}
+    -- _G.DrawTable = {}
     _G.world = windfield.newWorld(0, 0, true)
     _G.Input = baton.new{
         controls = {
@@ -54,51 +54,46 @@ function source.load()
 
     require"src.MapLoading.CollisionClasses"
 
-    player = require"src.Player.player"
-    player:load()
+    -- player = require"src.Player.player"
+    -- player:load()
 
 
-    require"src.UpdateAndDrawLoop.UpdateAndDrawLoops"
+    -- require"src.UpdateAndDrawLoop.UpdateAndDrawLoops"
 
-    Enemies = require"src.EnemyClasses.Enemies"
+    --Enemies = require"src.EnemyClasses.Enemies"
 
-    DataSaving = require"src.DataSaving.DataSaving"
+    --DataSaving = require"src.DataSaving.DataSaving"
     --DataSaving.Load()
 
     MapLoading = require"src.MapLoading.MapLoading"
-    MapLoading.CreateMap()
-
-    EntityController = require"src.ECS.EntityController"
-    EntityController.load()
+    MapLoading.load()
+    MapLoading.create()
 end
 
 function source.update(dt)
     Input:update()
-    Enemies.update(dt)
-    EntityController.update(dt)
-    player:update(dt)
-    player.hud.update(dt)
-    UpdateAll(dt)
+    --Enemies.update(dt)
+    --EntityController.update(dt)
+    --player:update(dt)
+    --player.hud.update(dt)
+    --UpdateAll(dt)
+    MapLoading.update(dt)
     world:update(dt)
     --Debug.update(dt)
 end
 
 function source.draw()
     love.graphics.clear(0.5, 0.5, 0)
-    EntityController.CameraControlledEntity.systems.cameraBehavior:attach()
     --player.camera:attach()
-        DrawAll()
         --if Debug.isEnabled then
-            world:draw()
+            MapLoading.draw()
         --end
         
-        player:draw()
-        Enemies.render()
-        EntityController.draw()
+        --player:draw()
+        --Enemies.render()
+        --EntityController.draw()
         --Debug.drawInsideCamera()
     --player.camera:detach()
-    EntityController.CameraControlledEntity.systems.cameraBehavior:detach()
-    player.hud.draw()
     --Debug.draw()
 end
 
@@ -113,23 +108,11 @@ function source.keypressed(key, scancode, isrepeat)
         Signal.emit("CastSpell")
     end
 
-    if key == "g" then
-        local mx, my = player.camera:mousePosition()
-        local query = world:queryCircleArea(mx, my, 16, {"All"})
-        if #query > 0 then
-            for i, object in ipairs(query) do
-                if object.collision_class then
-                    print(object.collision_class)
-                end
-            end
-        end
-
-    end
     --Debug.keypressed(key, scancode, isrepeat)
 end
 
 function source.mousepressed(x, y, button)
-    player:mousepressed(x, y, button)
+    --player:mousepressed(x, y, button)
     --Debug.mousepressed(x, y, button)
 end
 
@@ -138,7 +121,7 @@ function source.textinput(t)
 end
 
 function source.quit()
-    DataSaving.Save()
+    --DataSaving.Save()
 end
 
 return source

@@ -1,3 +1,7 @@
+if true then
+    return -- MODULE HAS BEEN REWRITTEN!
+end
+
 local Interact = {}
 
 local LoadingZones = require"src.MapLoading.Interact.LoadingZones"

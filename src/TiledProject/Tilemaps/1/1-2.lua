@@ -9,8 +9,8 @@ return {
   height = 23,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 5,
-  nextobjectid = 51,
+  nextlayerid = 7,
+  nextobjectid = 57,
   properties = {},
   tilesets = {
     {
@@ -91,6 +91,139 @@ return {
       type = "objectgroup",
       draworder = "topdown",
       id = 3,
+      name = "Objects",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 35,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 960,
+          y = 128,
+          width = 32,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 36,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 992,
+          y = 0,
+          width = 0,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 51,
+          name = "TeleportPoint",
+          type = "",
+          shape = "point",
+          x = 96,
+          y = 544,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 52,
+          name = "Zone",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 512,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["MapPath"] = "1-1.lua",
+            ["NeedsInteract"] = false,
+            ["TeleportPointID"] = 4
+          }
+        },
+        {
+          id = 53,
+          name = "TeleportPoint",
+          type = "",
+          shape = "point",
+          x = 896,
+          y = 160,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 54,
+          name = "Trigger",
+          type = "",
+          shape = "rectangle",
+          x = 1344,
+          y = 416,
+          width = 32,
+          height = 192,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["IsFromTiled"] = true,
+            ["ScriptPath"] = "../../../ScriptedEvents/TriggerEvents/1/DARRON_STOPS_BRENNEN.lua"
+          }
+        },
+        {
+          id = 55,
+          name = "TeleportPoint",
+          type = "",
+          shape = "point",
+          x = 1984,
+          y = 544,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 56,
+          name = "Passage",
+          type = "",
+          shape = "rectangle",
+          x = 1984,
+          y = 448,
+          width = 32,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["CanOpen"] = true,
+            ["HasScriptedEvent"] = true,
+            ["IsLocked"] = true,
+            ["IsOpen"] = false,
+            ["ScriptPath"] = "../../../ScriptedEvents/GateEvents/1/EXIT_CHLOROVYLL.lua"
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
       name = "Terrain",
       class = "",
       visible = true,
@@ -101,6 +234,32 @@ return {
       parallaxy = 1,
       properties = {},
       objects = {
+        {
+          id = 49,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 96,
+          y = 160,
+          width = 0,
+          height = 352,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 50,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 64,
+          y = 512,
+          width = 32,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
         {
           id = 11,
           name = "",
@@ -122,45 +281,6 @@ return {
           x = 640,
           y = 608,
           width = 864,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 13,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 1216,
-          y = 352,
-          width = 192,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 14,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 1536,
-          y = 416,
-          width = 128,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 15,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 1696,
-          y = 256,
-          width = 256,
           height = 0,
           rotation = 0,
           visible = true,
@@ -262,6 +382,45 @@ return {
           properties = {
             ["TextureID"] = "CHLOROVYLL_DIRT"
           }
+        },
+        {
+          id = 13,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1216,
+          y = 352,
+          width = 192,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 14,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1536,
+          y = 416,
+          width = 128,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 15,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1696,
+          y = 256,
+          width = 256,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         },
         {
           id = 22,
@@ -418,32 +577,6 @@ return {
           properties = {}
         },
         {
-          id = 35,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 960,
-          y = 128,
-          width = 32,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 36,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 992,
-          y = 0,
-          width = 0,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 37,
           name = "",
           type = "",
@@ -569,189 +702,6 @@ return {
           properties = {
             ["TextureID"] = "CHLOROVYLL_DIRT"
           }
-        },
-        {
-          id = 49,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 96,
-          y = 160,
-          width = 0,
-          height = 352,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 50,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 64,
-          y = 512,
-          width = 32,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 2,
-      name = "Interact",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 1,
-          name = "LoadingZone",
-          type = "",
-          shape = "rectangle",
-          x = 2016,
-          y = 512,
-          width = 64,
-          height = 64,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["MapToLoad"] = "1-5.lua",
-            ["NeedsInteract"] = false,
-            ["TeleportPointID"] = 24
-          }
-        },
-        {
-          id = 8,
-          name = "LoadingZone",
-          type = "",
-          shape = "rectangle",
-          x = 800,
-          y = 128,
-          width = 64,
-          height = 64,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["MapToLoad"] = "1-3.lua",
-            ["NeedsInteract"] = false,
-            ["TeleportPointID"] = 9
-          }
-        },
-        {
-          id = 9,
-          name = "LoadingZone",
-          type = "",
-          shape = "rectangle",
-          x = 0,
-          y = 512,
-          width = 64,
-          height = 64,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["MapToLoad"] = "1-1.lua",
-            ["NeedsInteract"] = false,
-            ["TeleportPointID"] = 4
-          }
-        },
-        {
-          id = 21,
-          name = "Gate",
-          type = "",
-          shape = "rectangle",
-          x = 1984,
-          y = 448,
-          width = 32,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["CanOpen"] = true,
-            ["HasScriptedEvent"] = true,
-            ["IsLocked"] = true,
-            ["IsOpen"] = false,
-            ["Script"] = "../../../ScriptedEvents/GateEvents/1/EXIT_CHLOROVYLL.lua"
-          }
-        },
-        {
-          id = 38,
-          name = "Trigger",
-          type = "",
-          shape = "rectangle",
-          x = 1344,
-          y = 416,
-          width = 0,
-          height = 192,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["IsFromTiled"] = true,
-            ["Script"] = "../../../ScriptedEvents/TriggerEvents/1/DARRON_STOPS_BRENNEN.lua"
-          }
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 4,
-      name = "TeleportPoints",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 10,
-          name = "",
-          type = "",
-          shape = "point",
-          x = 96,
-          y = 544,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 29,
-          name = "",
-          type = "",
-          shape = "point",
-          x = 896,
-          y = 160,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 30,
-          name = "",
-          type = "",
-          shape = "point",
-          x = 1984,
-          y = 544,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
         }
       }
     }

@@ -1,77 +1,63 @@
 local MapLoading = {}
 
-local player = require("src.Player.player")
-local Enemies = require"src.EnemyClasses.Enemies"
+local EntityController = require"src.ECS.EntityController"
 local Terrain = require"src.MapLoading.Terrain.Terrain"
-local PhysicsObjects = require"src.MapLoading.PhysicsObjects.PhysicsObjects"
-local Interact = require"src.MapLoading.Interact.Interact"
-local MiscObjects = require"src.MapLoading.MiscObjects.MiscObjects"
 
-MapLoading.CurrentMap = require"src.TiledProject.Tilemaps.1.1-1"
-MapLoading.DrawableMap = sti("src/TiledProject/Tilemaps/1/1-1.lua")
+local currentMap = require"src.TiledProject.Tilemaps.1.1-1"
+local drawableMap = sti("src/TiledProject/Tilemaps/1/1-1.lua")
 
-local PathToMaps = "src.TiledProject.Tilemaps."
-local PathToDrawMaps = "src/TiledProject/Tilemaps/"
-local ObjectLayers = {}
+-- Tiled Objects must be detached from Templates for their properties to be read properly.
 
-local function AssignLayers()
-    ObjectLayers = {}
-    for _, layer in ipairs(MapLoading.CurrentMap.layers) do
-        if layer.type == "objectgroup" then
-            ObjectLayers[layer.name] = layer.objects
-        elseif layer.type == "group" then -- most likely a group that contains objectgroups
-            ObjectLayers[layer.name] = {}
-            for i, sublayer in ipairs(layer.layers) do
-                ObjectLayers[layer.name][sublayer.name] = sublayer.objects
+function MapLoading.load()
+    EntityController.load()
+end
+
+function MapLoading.create()
+    for i, layer in ipairs(currentMap.layers) do
+        if layer.name == "Objects" then
+            for j, object in ipairs(layer.objects) do
+                if object.name ~= "TeleportPoint" then
+                    EntityController.newEntity(object)
+                elseif object.name == "TeleportPoint" then
+                    
+                end
+            end
+        elseif layer.name == "Terrain" then
+            for j, object in ipairs(layer.objects) do
+                Terrain.create(object)
             end
         end
     end
 end
 
--- Tiled Objects must be detached from Templates for their properties to be read properly.
-function MapLoading.CreateMap()
-    AssignLayers()
-    Terrain.Create(ObjectLayers.Terrain)
-    PhysicsObjects.Create(ObjectLayers)
-    Enemies.Create(ObjectLayers)
-    Interact.Create(ObjectLayers)
-    ObjectLayers = {}
-end
 
 function MapLoading.update(dt)
-    PhysicsObjects.update(dt)
-    Terrain.update(dt)
-    Interact.update(dt)
-    MiscObjects.update(dt)
+    EntityController.update(dt)
 end
 
-function MapLoading.DestroyMap()
-    Terrain.Destroy()
-    PhysicsObjects.Destroy()
-    Enemies.Remove()
-    Interact.Remove()
-    MiscObjects.remove()
+function MapLoading.destroy()
+    EntityController.removeAll(false)
+    Terrain.destroy()
+
 end
 
-function MapLoading.DrawMap()
-    MapLoading.DrawableMap:drawTileLayer("Foreground")
-    PhysicsObjects.draw()
-    Interact.draw()
-    Terrain.Draw()
-    MiscObjects.draw()
+function MapLoading.draw()
+    EntityController.CameraControlledEntity.systems.cameraBehavior:attach()
+        drawableMap:drawTileLayer("Foreground")
+        EntityController.draw()
+        Terrain.draw()
+        world:draw()
+    EntityController.CameraControlledEntity.systems.cameraBehavior:detach()
 end
 
-Signal.register("EnteredLoadingZone", function(zone)
-    player.setPosition(zone.TeleportPoint.x, zone.TeleportPoint.y)
+Signal.register("EnteredZone", function(zone, otherEntity)
+    otherEntity.components.hitbox:setPosition(zone.teleportPoint.x, zone.teleportPoint.y)
 
-    MapLoading.CurrentMap = require(PathToMaps .. zone.NextMapAreaNumber .. '.' .. zone.NextMapArea)
-    MapLoading.DrawableMap = sti(PathToDrawMaps .. zone.NextMapAreaNumber .. '/' .. zone.NextMapArea .. '.lua')
+    currentMap = zone.map
+    drawableMap = zone.drawableMap
 
-    MapLoading.DestroyMap()
-    MapLoading.CreateMap()
+    MapLoading.destroy()
+    MapLoading.create()
 end)
-
-table.insert(_G.UpdateTable, MapLoading.update)
-table.insert(_G.DrawTable, MapLoading.DrawMap)
 
 return MapLoading
