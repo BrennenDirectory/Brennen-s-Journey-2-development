@@ -13,7 +13,7 @@ world:addCollisionClass("ExteriorZone", {ignores = {"All"}, enter = {"Player"}})
 world:addCollisionClass("RespawnPoint", {ignores = {"All"}, enter = {"Player"}})
 world:addCollisionClass("KillZone", {ignores = {"All"}, enter = {"Player", "Enemy", "Crate"}})
 world:addCollisionClass("Trigger", {ignores = {"All"}, enter = {"Player"}})
-world:addCollisionClass("MovingPlatform") -- mostly here for querying purposes only
+world:addCollisionClass("Platform") -- mostly here for querying purposes only -- MovingPlatform
 world:addCollisionClass("EnemyProjectile", {ignores = {"Enemy", "EnemyProjectile", "Crate", "Player"}, enter = {"Player", "Enemy", "Wall", "Ground", "Crate"}})
 world:addCollisionClass("BasicSpell", {ignores = {"Player", "BasicSpell", "Enemy", "EnemyProjectile"}, enter = {"Breakable", "Crate", "Enemy", "Ground", 'Wall', "Passage"}})
 world:addCollisionClass("Bomb", {ignores = {"Bomb", "Player", "BasicSpell", "Enemy", "EnemyProjectile"}})

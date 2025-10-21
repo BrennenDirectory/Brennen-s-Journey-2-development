@@ -71,7 +71,7 @@ function Terrain.draw()
 end
 
 function Terrain.destroy()
-    for i, v in ipairs(TerrainObjects) do
+    for i, v in pairs(TerrainObjects) do
         v:destroy()
         TerrainObjects[i] = nil
     end

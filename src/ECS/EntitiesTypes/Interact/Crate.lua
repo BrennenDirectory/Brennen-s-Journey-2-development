@@ -35,6 +35,7 @@ local components = {
 local systems = {
     "heldObjectBehavior",
     "heldObjectWeld",
+    "hitboxInit"
 }
 
 local function Crate(TiledObject)
@@ -46,7 +47,6 @@ local function Crate(TiledObject)
     crate.components.liftable.homeY = TiledObject.y
     crate.components.liftable.canHold = TiledObject.properties.CanHold
     crate.components.liftable.canThrow = TiledObject.properties.CanThrow
-    crate.components.hitbox:setObject(crate)
 
     if TiledObject.properties.CanHold then
         crate.tags.canInteractWith = true

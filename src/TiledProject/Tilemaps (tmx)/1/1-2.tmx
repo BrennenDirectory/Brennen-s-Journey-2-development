@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="71" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="57">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="71" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="61">
  <editorsettings>
   <export target="../../Tilemaps/1/1-2.lua" format="lua"/>
  </editorsettings>
@@ -59,6 +59,13 @@
     <property name="IsLocked" type="bool" value="true"/>
     <property name="IsOpen" type="bool" value="false"/>
     <property name="ScriptPath" type="file" value="../../../ScriptedEvents/GateEvents/1/EXIT_CHLOROVYLL.lua"/>
+   </properties>
+  </object>
+  <object id="60" name="Zone" x="800" y="128" width="64" height="64">
+   <properties>
+    <property name="MapPath" type="file" value=""/>
+    <property name="NeedsInteract" type="bool" value="false"/>
+    <property name="TeleportPointID" type="int" value="0"/>
    </properties>
   </object>
  </objectgroup>

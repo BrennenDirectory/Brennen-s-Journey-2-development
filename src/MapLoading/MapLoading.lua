@@ -6,6 +6,7 @@ local Terrain = require"src.MapLoading.Terrain.Terrain"
 local currentMap = require"src.TiledProject.Tilemaps.1.1-1"
 local drawableMap = sti("src/TiledProject/Tilemaps/1/1-1.lua")
 
+local removeUserControlledEntities = false
 -- Tiled Objects must be detached from Templates for their properties to be read properly.
 
 function MapLoading.load()
@@ -18,8 +19,6 @@ function MapLoading.create()
             for j, object in ipairs(layer.objects) do
                 if object.name ~= "TeleportPoint" then
                     EntityController.newEntity(object)
-                elseif object.name == "TeleportPoint" then
-                    
                 end
             end
         elseif layer.name == "Terrain" then
@@ -36,9 +35,8 @@ function MapLoading.update(dt)
 end
 
 function MapLoading.destroy()
-    EntityController.removeAll(false)
+    EntityController.removeAll(removeUserControlledEntities)
     Terrain.destroy()
-
 end
 
 function MapLoading.draw()

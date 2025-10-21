@@ -22,7 +22,9 @@ local function Zone(TiledObject)
         }
     }
 
-    local systems = {}
+    local systems = {
+        "hitboxInit"
+    }
 
     if TiledObject.properties.NeedsInteract then
         components['interactableData'] = {
@@ -42,7 +44,6 @@ local function Zone(TiledObject)
     zone:addComponents(components)
     zone:addSystems(systems)
 
-    zone.components.hitbox:setObject(zone)
 
     return zone
 end

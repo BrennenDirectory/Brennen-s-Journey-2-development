@@ -1,4 +1,4 @@
-local IDS_TABLE = "Passages"
+local ID_TABLE = "Passages"
 
 local function interact(thisEntity, otherEntity)
     local passageData = thisEntity.components.passageData
@@ -25,19 +25,19 @@ local function interact(thisEntity, otherEntity)
     local saveData = otherEntity.components.saveData
     if saveData then
         local tiledID = thisEntity.components.tiledID
-        if saveData.content[IDS_TABLE] then
-            if not saveData.content[IDS_TABLE][tiledID] then
-                saveData.content[IDS_TABLE][tiledID] = true
+        if saveData.content[ID_TABLE] then
+            if not saveData.content[ID_TABLE][tiledID] then
+                saveData.content[ID_TABLE][tiledID] = true
             end
         else
-            saveData.content[IDS_TABLE] = {}
-            saveData.content[IDS_TABLE][tiledID] = true
+            saveData.content[ID_TABLE] = {}
+            saveData.content[ID_TABLE][tiledID] = true
         end
     end
 end
 
 local function onCreation(thisEntity)
-    Signal.emit("EntityCreated", IDS_TABLE, thisEntity)
+    Signal.emit("EntityCreated", ID_TABLE, thisEntity)
 end
 
 local function Passage(TiledObject)
@@ -45,7 +45,8 @@ local function Passage(TiledObject)
 
     local systems = {
         "interactableBehavior",
-        "entityCreation"
+        "entityCreation",
+        "hitboxInit"
     }
 
     local components = {
@@ -69,7 +70,8 @@ local function Passage(TiledObject)
             onInteract = interact
         },
         ['creationData'] = {
-            onCreation = onCreation
+            onCreation = onCreation,
+            postCreation = interact
         }
     }
 

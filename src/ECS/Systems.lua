@@ -11,6 +11,7 @@ require"src.ECS.SystemTypes.HitResponses"
 require"src.ECS.SystemTypes.CameraBehavior"
 require"src.ECS.SystemTypes.Spatial.HitboxCollisions"
 require"src.ECS.SystemTypes.Events.ScriptedEvents"
+require"src.ECS.SystemTypes.Physics.PlatformBehavior"
 
 return {
     heldObjectBehavior = HeldObjectBehavior,
@@ -32,5 +33,7 @@ return {
     scriptedEvents = ScriptedEvents,
     interactableBehavior = require"src.ECS.SystemTypes.Events.InteractableBehavior",
     entityCreation = require"src.ECS.SystemTypes.Events.EntityCreation",
-    entitySignal = require"src.ECS.SystemTypes.Events.EntitySignals"
+    entitySignal = require"src.ECS.SystemTypes.Events.EntitySignals",
+    hitboxInit = require"src.ECS.SystemTypes.Events.HitboxInit",
+    platformBehavior = PlatformBehavior
 }

@@ -35,20 +35,16 @@ end
 function Entity:destroy()
     self.flagForRemoval = true
 
-    if self.components.hitbox then
-        self.components.hitbox:destroy()
-    end
-
-    for component, data in pairs(self.components) do
-        self.components[component] = nil
-    end
-
     for system, data in pairs(self.systems) do
         if self.systems[system].remove then
             self.systems[system]:remove()
         end
 
         self.systems[system] = nil
+    end
+
+    for component, data in pairs(self.components) do
+        self.components[component] = nil
     end
 
     for tag, data in pairs(self.tags) do

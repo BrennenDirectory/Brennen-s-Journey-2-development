@@ -1,7 +1,8 @@
-local IDS_TABLE = "TriggerIDs"
+local ID_TABLE = "TriggerIDs"
 local systems = {
     "hitboxCollisions",
-    "scriptedEvents"
+    "scriptedEvents",
+    "hitboxInit"
 }
 
 local function Trigger(Object) -- Can be a TiledObject or a hard coded table
@@ -12,8 +13,8 @@ local function Trigger(Object) -- Can be a TiledObject or a hard coded table
         ['hitbox'] = {
             x = Object.x,
             y = Object.y,
-            width = Object.width > 0 and Object.width or 1,
-            height = Object.height > 0 and Object.height or 1,
+            width = Object.width,
+            height = Object.height,
             type = "static",
             hasFixedRotation = true,
             collisionClass = "Trigger"
@@ -30,13 +31,13 @@ local function Trigger(Object) -- Can be a TiledObject or a hard coded table
                 local tiledID = entity.components.tiledID
                 local saveData = otherEntity.components.saveData
 
-                if not saveData.content[IDS_TABLE] then
-                    saveData.content[IDS_TABLE] = {}
-                elseif saveData.content[IDS_TABLE][tiledID] then
+                if not saveData.content[ID_TABLE] then
+                    saveData.content[ID_TABLE] = {}
+                elseif saveData.content[ID_TABLE][tiledID] then
                     return
                 end
 
-                saveData.content[IDS_TABLE][tiledID] = true
+                saveData.content[ID_TABLE][tiledID] = true
 
                 entity.systems.scriptedEvents:execute(otherEntity)
             end
@@ -47,7 +48,6 @@ local function Trigger(Object) -- Can be a TiledObject or a hard coded table
     trigger:addComponents(components)
     trigger:addSystems(systems)
 
-    trigger.components.hitbox:setObject(trigger)
 
     return trigger
 end

@@ -9,7 +9,6 @@ return function(entity)
  
     entity.tags.systemForInteracting = "interactableBehavior"
     entity.tags.canInteractWith = true
-    entity.components.hitbox:setObject(entity)
 
     function interactableBehavior:interact(otherEntity)
         self.interactableData.onInteract(self.entity, otherEntity)

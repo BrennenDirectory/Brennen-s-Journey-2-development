@@ -1,15 +1,10 @@
 local source = {}
-local player
-local Enemies
 local MapLoading
-local DataSaving -- might choose to NOT save on application exit.
-local EntityController
 
 function source.load()
     local baton = require"src.lib.baton"
     local windfield = require("src.lib.windfield")
-    -- _G.UpdateTable = {}
-    -- _G.DrawTable = {}
+
     _G.world = windfield.newWorld(0, 0, true)
     _G.Input = baton.new{
         controls = {
@@ -29,41 +24,29 @@ function source.load()
     _G.sti = require"src.lib.sti"
     _G.WinWidth = 1280
     _G.WinHeight = 720
-    _G.PlayerSaveData = require"src.DataSaving.SavedDataTemplate" -- {}
    -- _G.Debug = require"src.Debug.Debug"
 
     -- object classes
-    require"src.Classes.PhysicsObjects.Crate"
-    require"src.Classes.PhysicsObjects.MovingPlatform"
-    require"src.Classes.PhysicsObjects.SwingingPlatform"
-    require"src.Classes.Interact.Pickup"
-    require"src.Classes.Interact.Trigger"
-    require"src.Classes.Interact.Gate"
-    require"src.Classes.Interact.Chest"
-    require"src.Classes.Misc.HealthBottle"
+    -- require"src.Classes.PhysicsObjects.Crate"
+    -- require"src.Classes.PhysicsObjects.MovingPlatform"
+    -- require"src.Classes.PhysicsObjects.SwingingPlatform"
+    -- require"src.Classes.Interact.Pickup"
+    -- require"src.Classes.Interact.Trigger"
+    -- require"src.Classes.Interact.Gate"
+    -- require"src.Classes.Interact.Chest"
+    -- require"src.Classes.Misc.HealthBottle"
 
     -- enemy classes
-    require"src.EnemyClasses.Glorp"
-    require"src.EnemyClasses.Bat"
-    require"src.EnemyClasses.Shooter"
-    require"src.EnemyClasses.Snapper"
+    -- require"src.EnemyClasses.Glorp"
+    -- require"src.EnemyClasses.Bat"
+    -- require"src.EnemyClasses.Shooter"
+    -- require"src.EnemyClasses.Snapper"
 
     world:setGravity(0, 1024)
     world:setQueryDebugDrawing(true)
     world:setExplicitCollisionEvents(true)
 
     require"src.MapLoading.CollisionClasses"
-
-    -- player = require"src.Player.player"
-    -- player:load()
-
-
-    -- require"src.UpdateAndDrawLoop.UpdateAndDrawLoops"
-
-    --Enemies = require"src.EnemyClasses.Enemies"
-
-    --DataSaving = require"src.DataSaving.DataSaving"
-    --DataSaving.Load()
 
     MapLoading = require"src.MapLoading.MapLoading"
     MapLoading.load()
@@ -72,11 +55,6 @@ end
 
 function source.update(dt)
     Input:update()
-    --Enemies.update(dt)
-    --EntityController.update(dt)
-    --player:update(dt)
-    --player.hud.update(dt)
-    --UpdateAll(dt)
     MapLoading.update(dt)
     world:update(dt)
     --Debug.update(dt)
@@ -84,16 +62,11 @@ end
 
 function source.draw()
     love.graphics.clear(0.5, 0.5, 0)
-    --player.camera:attach()
         --if Debug.isEnabled then
             MapLoading.draw()
         --end
         
-        --player:draw()
-        --Enemies.render()
-        --EntityController.draw()
         --Debug.drawInsideCamera()
-    --player.camera:detach()
     --Debug.draw()
 end
 

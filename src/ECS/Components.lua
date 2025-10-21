@@ -18,7 +18,10 @@ return {
     interactableData = require"src.ECS.ComponentTypes.Data.InteractableData",
     zoneData = require"src.ECS.ComponentTypes.Data.ZoneData",
     passageData = require"src.ECS.ComponentTypes.Data.PassageData",
-    tiledID = require"src.ECS.ComponentTypes.Data.TiledID",
+    tiledID = require"src.ECS.ComponentTypes.Primitives.TiledID",
     creationData = require"src.ECS.ComponentTypes.Data.CreationData",
-    signalData = require"src.ECS.ComponentTypes.Data.SignalData"
+    signalData = require"src.ECS.ComponentTypes.Data.SignalData",
+    breakable = require"src.ECS.ComponentTypes.Primitives.Breakable",
+    respawnData = require"src.ECS.ComponentTypes.Data.RespawnData",
+    platformData = require"src.ECS.ComponentTypes.Physics.PlatformData"
 }

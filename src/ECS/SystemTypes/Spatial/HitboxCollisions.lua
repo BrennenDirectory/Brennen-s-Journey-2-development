@@ -44,7 +44,7 @@ end
 function HitboxCollisions:exitEvents(dt)
     for i, class in ipairs(self.collisionData.onExitClasses) do
         if self.hitbox:enter(class) then
-            local otherHitbox = self.hitbox:getEnterCollisionData(class)
+            local otherHitbox = self.hitbox:getExitCollisionData(class)
             local otherEntity = otherHitbox:getObject()
             self.collisionData.onExitEvent(self.entity, otherEntity)
         end
@@ -54,7 +54,7 @@ end
 function HitboxCollisions:stayEvents(dt)
     for i, class in ipairs(self.collisionData.onStayClasses) do
         if self.hitbox:enter(class) then
-            local otherHitbox = self.hitbox:getEnterCollisionData(class)
+            local otherHitbox = self.hitbox:getStayCollisionData(class)
             local otherEntity = otherHitbox:getObject()
             self.collisionData.onStayEvent(dt, self.entity, otherEntity)
         end

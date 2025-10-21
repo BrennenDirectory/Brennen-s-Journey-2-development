@@ -86,7 +86,8 @@ local systems = {
     "weaponControls",
     "entitySerialization",
     "cameraBehavior",
-    "hitboxCollisions"
+    "hitboxCollisions",
+    "hitboxInit"
 }
 
 local function Player()
@@ -97,17 +98,14 @@ local function Player()
 
     player.components.hitbox:setX(player.components.position.x)
     player.components.hitbox:setY(player.components.position.y)
-    player.components.hitbox:setObject(player)
 
     player:addComponents({
         ['signalData'] = {
             name = "EntityCreated",
             signalBody = function(idTable, entity)
                 local saveData = player.components.saveData
-                if not saveData[idTable] or not saveData[idTable][entity.components.tiledID] then
-                    return
-                else
-                    entity.systems.interactableBehavior:interact(player)
+                if saveData[idTable] and saveData[idTable][entity.components.tiledID] then
+                    entity.components.creationData.postCreation(entity, player)
                 end
             end
         }

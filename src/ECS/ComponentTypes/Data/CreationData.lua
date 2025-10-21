@@ -1,5 +1,6 @@
 return function(data)
     return {
-        onCreation = data.onCreation
+        onCreation = data.onCreation,
+        postCreation = data.postCreation
     }
 end

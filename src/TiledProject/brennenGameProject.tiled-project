@@ -21,7 +21,7 @@
                 "SandBomb",
                 "GravelBomb"
             ],
-            "valuesAsFlags": false
+            "valuesAsFlags": true
         },
         {
             "id": 9,
